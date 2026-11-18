@@ -11,44 +11,22 @@ import Slide8 from './slides/Slide8';
 import Slide9 from './slides/Slide9';
 import Slide10 from './slides/Slide10';
 import Slide11 from './slides/Slide11';
-import Slide12 from './slides/Slide12';
-import Slide13 from './slides/Slide13';
-import Slide14 from './slides/Slide14';
-import Slide15 from './slides/Slide15';
-import Slide16 from './slides/Slide16';
-import Slide17 from './slides/Slide17';
-import Slide18 from './slides/Slide18';
-import Slide19 from './slides/Slide19';
-import Slide20 from './slides/Slide20';
 import { SLIDES_DATA } from './slidesData';
 import './index.css';
 
 export const SLIDES = [
-  Slide1,  // 01: Title Slide (One place for people, time and pay.)
-  Slide2,  // 02: What is inside (4 Group Cards, 17 Sections)
-  Slide3,  // 03: HR Dashboard (Section 1)
-  Slide4,  // 04: Employees (Section 2)
-  Slide5,  // 05: Leave (Section 3)
-  Slide6,  // 06: Payroll (Section 4)
-  Slide7,  // 07: Attendance (Section 5)
-  Slide8,  // 08: Loan (Section 6)
-  Slide9,  // 09: Salary Increment (Section 7)
-  Slide10, // 10: Salary Discrepancy (Section 8)
-  Slide11, // 11: Disciplinary Action (Section 9)
-  Slide12, // 12: Ticket Management (Section 10)
-  Slide13, // 13: Digital Forms (Section 11)
-  Slide14, // 14: Clearance Form (Section 12)
-  Slide15, // 15: Employee Rejoining (Section 13)
-  Slide16, // 16: Report (Section 14)
-  Slide17, // 17: Meeting Arrangements (Section 15)
-  Slide18, // 18: Audit Logs (Section 16)
-  Slide19, // 19: Payroll Settings (Section 17)
-  Slide20, // 20: Closing (Thank you / Questions?)
+  Slide1,  // 01: Cover Slide
+  Slide2,  // 02: Overview — What this system covers
+  Slide3,  // 03: People & Time — HR Dashboard & Employees
+  Slide4,  // 04: People & Time — Attendance & Leave
+  Slide5,  // 05: Money — Payroll & Loan
+  Slide6,  // 06: Money — Salary Increment & Salary Discrepancy
+  Slide7,  // 07: Money & Governance — Payroll Settings & Audit Logs
+  Slide8,  // 08: Rules & Records — Disciplinary Action & Digital Forms
+  Slide9,  // 09: Rules & Records — Clearance Form & Employee Rejoining
+  Slide10, // 10: Support & Services — Ticket Management & Meeting Arrangements
+  Slide11, // 11: Reports & Summary — Report & Executive Summary / Q&A
 ];
-
-export const MODULE_NAMES = SLIDES_DATA
-  .filter((s) => s.type === 'module')
-  .map((s) => s.sectionName);
 
 /* ─── Compact Liquid Glass Button (36px high, 13px text) ───────────────────── */
 function GlassButton({ children, onClick, disabled, style = {} }) {
@@ -106,35 +84,33 @@ function LogoBar() {
       transition={{ duration: 0.5, delay: 0.1 }}
       style={{
         position: 'fixed',
-        top: 36,
+        top: 32,
         right: 48,
-        height: 36,
+        height: 40,
         display: 'flex',
         alignItems: 'center',
         zIndex: 200,
-        background: 'rgba(255, 255, 255, 0.88)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        border: '1px solid #E2E8F0',
-        borderRadius: 999,
-        padding: '0 14px',
-        boxShadow: '0 3px 12px rgba(11, 31, 75, 0.04), inset 0 1px 0 #FFFFFF',
+        background: 'transparent',
+        border: 'none',
+        borderRadius: 0,
+        padding: 0,
+        boxShadow: 'none',
       }}
     >
       <img
         src="/assets/logo.png"
         alt="Builtraa"
-        style={{ height: 22, objectFit: 'contain', objectPosition: 'left' }}
+        style={{ height: 34, objectFit: 'contain', objectPosition: 'left' }}
       />
       <div style={{
-        width: 1, height: 16, background: '#CBD5E1',
-        margin: '0 10px',
+        width: 1, height: 22, background: '#CBD5E1',
+        margin: '0 14px',
         flexShrink: 0,
       }} />
       <img
         src="/assets/uxdlab-logo.png"
         alt="uxdlab"
-        style={{ height: 17, objectFit: 'contain' }}
+        style={{ height: 28, objectFit: 'contain' }}
       />
     </motion.div>
   );
@@ -155,7 +131,7 @@ function HomeButton({ onClick }) {
   );
 }
 
-/* ─── Bottom Navigation Pill (The ONLY Slide Counter) ───────────────────────── */
+/* ─── Bottom Navigation Pill (The ONLY Slide Counter: 01 — 10) ─────────────── */
 function BottomNav({ current, total, onPrev, onNext }) {
   const pad = (n) => String(n).padStart(2, '0');
   const pct = ((current) / Math.max(1, total - 1)) * 100;
@@ -202,7 +178,7 @@ function BottomNav({ current, total, onPrev, onNext }) {
         </svg>
       </motion.button>
 
-      {/* Progress & Counter (01 — 20) */}
+      {/* Progress & Counter (01 — 10) */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 150 }}>
         <span style={{
           fontSize: 13, fontWeight: 700, color: '#0B1F4B',
@@ -276,7 +252,7 @@ function SpeakerNotesDrawer({ isOpen, onClose, notes, slideNum }) {
         position: 'fixed',
         bottom: 90,
         right: 48,
-        width: 440,
+        width: 460,
         borderRadius: 20,
         padding: '20px 24px',
         background: 'rgba(255, 255, 255, 0.96)',
@@ -286,18 +262,16 @@ function SpeakerNotesDrawer({ isOpen, onClose, notes, slideNum }) {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: '0.1em',
-            color: '#EF144E',
-            textTransform: 'uppercase',
-            fontFamily: "'Inter', sans-serif",
-          }}>
-            SPEAKER SCRIPT · SLIDE {String(slideNum).padStart(2, '0')}
-          </span>
-        </div>
+        <span style={{
+          fontSize: 11,
+          fontWeight: 700,
+          letterSpacing: '0.1em',
+          color: '#EF144E',
+          textTransform: 'uppercase',
+          fontFamily: "'Inter', sans-serif",
+        }}>
+          SPEAKER SCRIPT · SLIDE {String(slideNum).padStart(2, '0')}
+        </span>
         <button
           onClick={onClose}
           style={{
@@ -316,7 +290,7 @@ function SpeakerNotesDrawer({ isOpen, onClose, notes, slideNum }) {
       </div>
 
       <div style={{
-        fontSize: 15,
+        fontSize: 14.5,
         lineHeight: 1.5,
         color: '#0B1F4B',
         fontFamily: "'Inter', sans-serif",
@@ -421,23 +395,20 @@ export default function App() {
   const SlideComp = SLIDES[current];
   const currentSlideData = SLIDES_DATA[current] || {};
 
-  // Modern Blur + Fade Slide Transition
+  // Clean Fade Slide Transition
   const slideVariants = {
     enter: (d) => ({
       opacity: 0,
-      filter: 'blur(8px)',
-      y: d > 0 ? 20 : -20,
+      y: d > 0 ? 16 : -16,
     }),
     center: {
       opacity: 1,
-      filter: 'blur(0px)',
       y: 0,
       transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
     },
     exit: (d) => ({
       opacity: 0,
-      filter: 'blur(6px)',
-      y: d > 0 ? -20 : 20,
+      y: d > 0 ? -16 : 16,
       transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
     }),
   };
@@ -500,7 +471,7 @@ export default function App() {
         </AnimatePresence>
       </div>
 
-      {/* Bottom Bar Safe Zone: Centred Nav Pill (ONLY counter) */}
+      {/* Bottom Bar Safe Zone: Centred Nav Pill (ONLY counter: 01 — 10) */}
       <BottomNav
         current={current}
         total={SLIDES.length}

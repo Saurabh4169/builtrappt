@@ -1,0 +1,128 @@
+{
+  "hr-dashboard": {
+    "source": "public/assets/originals/hr-dashboard.png",
+    "x": 0,
+    "y": 0,
+    "w": 823,
+    "h": 392
+  },
+  "employees": {
+    "source": "public/assets/originals/employees.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 488
+  },
+  "attendance": {
+    "source": "public/assets/originals/attendance.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 488
+  },
+  "leave": {
+    "source": "public/assets/originals/leave.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 488
+  },
+  "payroll": {
+    "source": "public/assets/originals/payroll.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 488
+  },
+  "loan": {
+    "source": "public/assets/originals/loan.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 488
+  },
+  "salary-increment": {
+    "source": "public/assets/originals/salary-increment.png",
+    "x": 0,
+    "y": 0,
+    "w": 508,
+    "h": 242
+  },
+  "salary-discrepancy": {
+    "source": "public/assets/originals/salary-discrepancy.png",
+    "x": 0,
+    "y": 0,
+    "w": 622,
+    "h": 296
+  },
+  "payroll-settings": {
+    "source": "public/assets/originals/payroll-settings.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 324
+  },
+  "audit-logs": {
+    "source": "public/assets/originals/audit-logs.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 488
+  },
+  "employee-rejoining": {
+    "source": "public/assets/originals/employee-rejoining.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 488
+  },
+  "ticket-management": {
+    "source": "public/assets/originals/ticket-management.png",
+    "x": 0,
+    "y": 0,
+    "w": 483,
+    "h": 230
+  },
+  "meeting-arrangements": {
+    "source": "public/assets/originals/meeting-arrangements.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 488
+  },
+  "report": {
+    "source": "public/assets/originals/report.png",
+    "x": 0,
+    "y": 0,
+    "w": 859,
+    "h": 409
+  },
+  "sidebar-1": {
+    "source": "public/assets/originals/sidebar-1.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 488
+  },
+  "disciplinary-action": {
+    "source": "public/assets/originals/disciplinary-action.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 327
+  },
+  "digital-forms": {
+    "source": "public/assets/originals/digital-forms.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 223
+  },
+  "clearance-form": {
+    "source": "public/assets/originals/clearance-form.png",
+    "x": 0,
+    "y": 0,
+    "w": 1024,
+    "h": 223
+  }
+}

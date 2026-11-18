@@ -3,11 +3,17 @@ import { motion } from 'framer-motion';
 import { SlideLayout, SlideTitle, BRAND, NAVY, ROYAL, GREY, easeCurve } from '../components/shared';
 import { SLIDES_DATA } from '../slidesData';
 
-export default function Slide2({ slideIndex = 2, totalSlides = 20, onNavigate }) {
+export default function Slide2({ slideIndex = 2, totalSlides = 11, onNavigate }) {
   const slideData = SLIDES_DATA.find((s) => s.slideNumber === 2);
 
+  if (!slideData) return null;
+
   return (
-    <SlideLayout slideNumber={slideIndex} totalSlides={totalSlides} speakerNotes={slideData.speakerNotes}>
+    <SlideLayout
+      slideNumber={slideIndex}
+      totalSlides={totalSlides}
+      speakerNotes={slideData.speakerNotes}
+    >
       {/* Title */}
       <SlideTitle
         eyebrow={slideData.eyebrow}
@@ -21,7 +27,7 @@ export default function Slide2({ slideIndex = 2, totalSlides = 20, onNavigate })
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 24,
+        gap: 22,
         flex: 1,
         alignItems: 'stretch',
         minHeight: 0,
@@ -34,14 +40,13 @@ export default function Slide2({ slideIndex = 2, totalSlides = 20, onNavigate })
               key={category.title}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.2 + catIdx * 0.08, ease: easeCurve }}
-              className="glass"
+              transition={{ duration: 0.45, delay: 0.15 + catIdx * 0.08, ease: easeCurve }}
               style={{
-                borderRadius: 24,
-                padding: '24px 20px',
-                border: '1px solid rgba(226, 232, 240, 0.9)',
-                background: 'rgba(255, 255, 255, 0.8)',
-                boxShadow: '0 8px 24px rgba(11, 31, 75, 0.05)',
+                borderRadius: 20,
+                padding: '20px 18px',
+                border: '1px solid #E2E8F0',
+                background: '#FFFFFF',
+                boxShadow: '0 4px 16px rgba(11, 31, 75, 0.03)',
                 display: 'flex',
                 flexDirection: 'column',
               }}
@@ -51,25 +56,26 @@ export default function Slide2({ slideIndex = 2, totalSlides = 20, onNavigate })
                 display: 'flex',
                 alignItems: 'center',
                 gap: 12,
-                marginBottom: 20,
-                paddingBottom: 14,
-                borderBottom: '1px solid rgba(226, 232, 240, 0.8)',
+                marginBottom: 16,
+                paddingBottom: 12,
+                borderBottom: '1px solid #E2E8F0',
               }}>
                 <div style={{
                   width: 38,
                   height: 38,
-                  borderRadius: 12,
+                  borderRadius: 10,
                   background: catIdx === 0 || catIdx === 1
                     ? 'linear-gradient(135deg, rgba(239, 20, 78, 0.1) 0%, rgba(29, 78, 216, 0.08) 100%)'
                     : 'linear-gradient(135deg, rgba(29, 78, 216, 0.1) 0%, rgba(239, 20, 78, 0.08) 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  flexShrink: 0,
                 }}>
                   <CatIcon size={20} color={catIdx === 0 || catIdx === 1 ? BRAND : ROYAL} strokeWidth={2} />
                 </div>
                 <div style={{
-                  fontSize: 18,
+                  fontSize: 17,
                   fontWeight: 700,
                   color: NAVY,
                   fontFamily: "'Inter', sans-serif",
@@ -82,7 +88,7 @@ export default function Slide2({ slideIndex = 2, totalSlides = 20, onNavigate })
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 10,
+                gap: 9,
                 flex: 1,
                 justifyContent: 'flex-start',
               }}>
@@ -91,25 +97,24 @@ export default function Slide2({ slideIndex = 2, totalSlides = 20, onNavigate })
                   return (
                     <motion.div
                       key={sec.name}
-                      whileHover={{ scale: 1.03, x: 4 }}
+                      whileHover={{ scale: 1.025, x: 4 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => onNavigate && onNavigate(sec.slide - 1, 1)}
-                      className="glass card-interactive"
                       style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        padding: '12px 14px',
-                        borderRadius: 14,
-                        border: '1px solid rgba(226, 232, 240, 0.85)',
-                        background: 'rgba(255, 255, 255, 0.9)',
+                        padding: '11px 14px',
+                        borderRadius: 12,
+                        border: '1px solid #E2E8F0',
+                        background: '#F8FAFC',
                         cursor: 'pointer',
-                        boxShadow: '0 2px 6px rgba(11, 31, 75, 0.02)',
+                        boxShadow: '0 1px 4px rgba(11, 31, 75, 0.02)',
                         transition: 'border-color 0.2s ease, background 0.2s ease',
                       }}
                     >
                       <span style={{
-                        fontSize: 15,
+                        fontSize: 14.5,
                         fontWeight: 600,
                         color: NAVY,
                         fontFamily: "'Inter', sans-serif",
@@ -117,7 +122,7 @@ export default function Slide2({ slideIndex = 2, totalSlides = 20, onNavigate })
                         {sec.name}
                       </span>
                       <span style={{
-                        fontSize: 13,
+                        fontSize: 12.5,
                         fontWeight: 700,
                         color: BRAND,
                         fontFamily: "'Inter', sans-serif",
@@ -141,13 +146,22 @@ export default function Slide2({ slideIndex = 2, totalSlides = 20, onNavigate })
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingTop: 8,
+        paddingTop: 10,
         fontSize: 14,
         color: GREY,
         fontFamily: "'Inter', sans-serif",
       }}>
         <span>Click any section above to jump directly to its slide.</span>
-        <span style={{ color: BRAND, fontWeight: 600 }}>Next: HR Dashboard (Slide 03) →</span>
+        <span
+          onClick={() => onNavigate && onNavigate(2, 1)}
+          style={{
+            color: BRAND,
+            fontWeight: 600,
+            cursor: 'pointer',
+          }}
+        >
+          Next: HR Dashboard & Employees (Slide 03) →
+        </span>
       </div>
     </SlideLayout>
   );

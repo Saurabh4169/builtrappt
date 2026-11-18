@@ -1,22 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { BRAND, NAVY, ROYAL, GREY, easeCurve } from '../components/shared';
-import { SLIDES_DATA } from '../slidesData';
-import { Users, CalendarDays, Clock, Wallet, FileText } from 'lucide-react';
+import { BRAND, NAVY, GREY, easeCurve } from '../components/shared';
 
 export default function Slide1({ onNavigate }) {
-  const [hoveredTile, setHoveredTile] = useState(null);
-
-  // 17 section names from SLIDES_DATA (modules)
-  const moduleSections = SLIDES_DATA.filter((s) => s.type === 'module');
-
-  // 5 floating icon tiles with distinct positions and floating animation offsets
-  const iconTiles = [
-    { id: 1, icon: Users, label: 'People', size: 96, x: 60, y: 50, duration: 8, delay: 0 },
-    { id: 2, icon: CalendarDays, label: 'Leave', size: 88, x: 280, y: 20, duration: 9.5, delay: 0.8 },
-    { id: 3, icon: Clock, label: 'Time', size: 104, x: 170, y: 200, duration: 7.2, delay: 0.4 },
-    { id: 4, icon: Wallet, label: 'Money', size: 92, x: 40, y: 350, duration: 8.8, delay: 1.2 },
-    { id: 5, icon: FileText, label: 'Records', size: 86, x: 260, y: 340, duration: 10.2, delay: 0.6 },
+  // 17 module section names for bottom marquee ticker
+  const sectionList = [
+    'HR Dashboard', 'Employees', 'Leave', 'Payroll', 'Attendance', 'Loan',
+    'Salary Increment', 'Salary Discrepancy', 'Disciplinary Action', 'Ticket Management',
+    'Digital Forms', 'Clearance Form', 'Employee Rejoining', 'Report',
+    'Meeting Arrangements', 'Audit Logs', 'Payroll Settings',
   ];
 
   return (
@@ -26,7 +18,7 @@ export default function Slide1({ onNavigate }) {
         height: 1080,
         position: 'relative',
         overflow: 'hidden',
-        background: '#FFFFFF',
+        background: '#FFFFFF', // Pure solid white, NO gradient wash
       }}
     >
       {/* 3px Top Brand Progress Line */}
@@ -34,7 +26,7 @@ export default function Slide1({ onNavigate }) {
         position: 'absolute', top: 0, left: 0, right: 0, height: 3,
         background: 'rgba(11, 31, 75, 0.06)', zIndex: 300,
       }}>
-        <div style={{ height: '100%', width: '5%', background: BRAND }} />
+        <div style={{ height: '100%', width: '9%', background: BRAND }} />
       </div>
 
       {/* Dotted Grid Background */}
@@ -49,70 +41,33 @@ export default function Slide1({ onNavigate }) {
         }}
       />
 
-      {/* Soft Ambient Background Glows */}
+      {/* Main Content Area (Strict Safe Zone: margins 96px, top 100px, bottom 72px) */}
       <div style={{
         position: 'absolute',
-        top: '12%',
-        right: '10%',
-        width: 560,
-        height: 560,
-        borderRadius: '50%',
-        background: 'rgba(29, 78, 216, 0.07)',
-        filter: 'blur(130px)',
-        pointerEvents: 'none',
-        zIndex: 1,
-      }} />
-      <div style={{
-        position: 'absolute',
-        bottom: '12%',
-        left: '8%',
-        width: 520,
-        height: 520,
-        borderRadius: '50%',
-        background: 'rgba(239, 20, 78, 0.06)',
-        filter: 'blur(140px)',
-        pointerEvents: 'none',
-        zIndex: 1,
-      }} />
-      <div style={{
-        position: 'absolute',
-        top: '38%',
-        left: '46%',
-        width: 440,
-        height: 440,
-        borderRadius: '50%',
-        background: 'rgba(219, 234, 254, 0.35)',
-        filter: 'blur(140px)',
-        pointerEvents: 'none',
-        zIndex: 1,
-      }} />
-
-      {/* Main Content Area (Strict Safe Zone: y = 130 to y = 920) */}
-      <div style={{
-        position: 'absolute',
-        top: 130,
+        top: 100,
         left: 96,
         right: 96,
-        bottom: 120,
+        bottom: 72,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         zIndex: 10,
       }}>
-        {/* Top Split: Left Content + Right Floating Icon Cluster */}
+        {/* Top Split: Left Content + Right Laptop & Phone Mockup */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flex: 1,
-          gap: 60,
+          gap: 40,
         }}>
-          {/* Left Column (54% width) */}
+          {/* Left Column (Content Block) */}
           <div style={{
-            width: '54%',
+            width: '46%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
+            zIndex: 15,
           }}>
             {/* Eyebrow: HR MANAGEMENT SYSTEM */}
             <div style={{ marginBottom: 20 }}>
@@ -122,7 +77,7 @@ export default function Slide1({ onNavigate }) {
                 transition={{ duration: 0.45, delay: 0.15, ease: easeCurve }}
                 style={{
                   fontSize: 14,
-                  fontWeight: 600,
+                  fontWeight: 700,
                   letterSpacing: '0.14em',
                   color: BRAND,
                   textTransform: 'uppercase',
@@ -140,7 +95,7 @@ export default function Slide1({ onNavigate }) {
               />
             </div>
 
-            {/* Title: "One place for people, time and pay." */}
+            {/* Title: "One platform for people, time and pay." (78px, weight 800) */}
             <div style={{
               fontSize: 78,
               fontWeight: 800,
@@ -156,7 +111,7 @@ export default function Slide1({ onNavigate }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.4, ease: easeCurve }}
               >
-                One place for
+                One platform for
               </motion.div>
 
               <motion.div
@@ -193,14 +148,14 @@ export default function Slide1({ onNavigate }) {
                 color: GREY,
                 marginBottom: 36,
                 fontFamily: "'Inter', sans-serif",
-                maxWidth: 580,
+                maxWidth: 620,
                 lineHeight: 1.4,
               }}
             >
-              Everything about your workforce, managed in one system.
+              A comprehensive enterprise HR workspace uniting all 17 modules into one seamless platform.
             </motion.div>
 
-            {/* Glass Pill Button "Start →" */}
+            {/* Glass Pill Button "Explore Presentation →" */}
             <motion.button
               onClick={() => onNavigate(1, 1)}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -218,111 +173,93 @@ export default function Slide1({ onNavigate }) {
                 fontSize: 18,
                 fontWeight: 700,
                 color: NAVY,
-                background: 'rgba(255, 255, 255, 0.92)',
-                border: '1.5px solid rgba(226, 232, 240, 0.9)',
+                background: 'rgba(255, 255, 255, 0.95)',
+                border: '1.5px solid #E2E8F0',
                 boxShadow: '0 8px 24px rgba(11, 31, 75, 0.08), inset 0 1px 0 #FFFFFF',
                 cursor: 'pointer',
                 outline: 'none',
                 fontFamily: "'Inter', sans-serif",
               }}
             >
-              <span>Start</span>
+              <span>Explore Presentation</span>
               <span style={{ color: BRAND, fontSize: 20 }}>→</span>
             </motion.button>
           </div>
 
-          {/* Right Column (46% width): Floating Cluster of 5 Glass Tiles with Lucide Icons */}
+          {/* Right Column (Hero Laptop + Phone Mockup Container - Precisely sized, Static, Sharp) */}
           <div style={{
-            width: '44%',
-            height: 480,
+            width: '54%',
+            height: 600,
             position: 'relative',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-            {/* Center soft glow behind tiles */}
+            {/* Soft Brand Glow behind the devices */}
             <div style={{
               position: 'absolute',
-              width: 380,
-              height: 380,
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(239, 20, 78, 0.12) 0%, rgba(29, 78, 216, 0.08) 50%, transparent 75%)',
-              filter: 'blur(40px)',
+              width: 580,
+              height: 440,
+              top: '48%',
+              left: '52%',
+              transform: 'translate(-50%, -50%)',
+              background: 'radial-gradient(circle at 55% 45%, rgba(239, 20, 78, 0.08) 0%, transparent 68%)',
               pointerEvents: 'none',
+              zIndex: 1,
             }} />
 
-            {/* The 5 Floating Icon Tiles */}
-            {iconTiles.map((tile) => {
-              const IconComp = tile.icon;
-              const isHovered = hoveredTile === tile.id;
-              return (
-                <motion.div
-                  key={tile.id}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    y: [0, -14, 0, 14, 0],
-                    x: [0, 8, 0, -8, 0],
-                  }}
-                  transition={{
-                    opacity: { duration: 0.6, delay: 0.3 + tile.delay },
-                    scale: { duration: 0.6, delay: 0.3 + tile.delay },
-                    y: {
-                      duration: tile.duration,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    },
-                    x: {
-                      duration: tile.duration * 1.2,
-                      repeat: Infinity,
-                      ease: 'easeInOut',
-                    },
-                  }}
-                  onMouseEnter={() => setHoveredTile(tile.id)}
-                  onMouseLeave={() => setHoveredTile(null)}
-                  whileHover={{ scale: 1.12, zIndex: 30 }}
-                  className="glass"
-                  style={{
-                    position: 'absolute',
-                    left: tile.x,
-                    top: tile.y,
-                    width: tile.size,
-                    height: tile.size,
-                    borderRadius: 24,
-                    background: isHovered
-                      ? 'rgba(255, 255, 255, 0.98)'
-                      : 'rgba(255, 255, 255, 0.85)',
-                    border: isHovered
-                      ? `2px solid ${BRAND}`
-                      : '1.5px solid rgba(226, 232, 240, 0.9)',
-                    boxShadow: isHovered
-                      ? '0 16px 36px rgba(239, 20, 78, 0.18), inset 0 1px 0 #FFFFFF'
-                      : '0 10px 28px rgba(11, 31, 75, 0.08), inset 0 1px 0 #FFFFFF',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'default',
-                    zIndex: 10,
-                  }}
-                >
-                  <IconComp
-                    size={tile.size * 0.42}
-                    color={tile.id === 1 || tile.id === 4 ? BRAND : ROYAL}
-                    strokeWidth={1.8}
-                  />
-                </motion.div>
-              );
-            })}
+            {/* Soft Oval Shadow Under Laptop Base */}
+            <div style={{
+              position: 'absolute',
+              bottom: 60,
+              left: '48%',
+              transform: 'translateX(-50%)',
+              width: 440,
+              height: 20,
+              borderRadius: '50%',
+              background: 'rgba(15, 23, 42, 0.13)',
+              filter: 'blur(16px)',
+              pointerEvents: 'none',
+              zIndex: 2,
+            }} />
+
+            {/* Hero Mockup Wrapper (Reduced balanced size ~680px, No animation, Crystal clear) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: easeCurve }}
+              style={{
+                width: 680,
+                height: 448,
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 10,
+              }}
+            >
+              <img
+                src="/assets/hero/device-mockup.png"
+                alt="Builtraa HR Platform on Laptop and Mobile"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  imageRendering: '-webkit-optimize-contrast',
+                  filter: 'drop-shadow(0 16px 36px rgba(11, 31, 75, 0.12))',
+                  userSelect: 'none',
+                  pointerEvents: 'none',
+                }}
+              />
+            </motion.div>
           </div>
         </div>
 
         {/* Bottom Strip: Slow moving row of 17 section names as chips */}
         <div style={{
-          marginTop: 24,
-          paddingTop: 16,
-          borderTop: '1px solid rgba(226, 232, 240, 0.8)',
+          marginTop: 18,
+          paddingTop: 14,
+          borderTop: '1px solid #E2E8F0',
           overflow: 'hidden',
           position: 'relative',
         }}>
@@ -350,7 +287,7 @@ export default function Slide1({ onNavigate }) {
               }}
               style={{ display: 'flex', gap: 12, flexShrink: 0 }}
             >
-              {[...moduleSections, ...moduleSections].map((sec, idx) => (
+              {[...sectionList, ...sectionList].map((name, idx) => (
                 <div
                   key={idx}
                   style={{
@@ -359,7 +296,7 @@ export default function Slide1({ onNavigate }) {
                     gap: 8,
                     padding: '8px 16px',
                     borderRadius: 999,
-                    background: 'rgba(255, 255, 255, 0.85)',
+                    background: '#FFFFFF',
                     border: '1px solid #E2E8F0',
                     fontSize: 13,
                     fontWeight: 600,
@@ -369,9 +306,9 @@ export default function Slide1({ onNavigate }) {
                   }}
                 >
                   <span style={{ color: BRAND, fontWeight: 700 }}>
-                    {String(sec.slideNumber).padStart(2, '0')}
+                    {String((idx % 17) + 1).padStart(2, '0')}
                   </span>
-                  <span>{sec.sectionName}</span>
+                  <span>{name}</span>
                 </div>
               ))}
             </motion.div>

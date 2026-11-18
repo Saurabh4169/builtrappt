@@ -28,6 +28,7 @@ import {
   Coins,
   ShieldCheck,
   Calendar,
+  Sparkles,
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -59,32 +60,32 @@ const ICON_MAP = {
   Coins,
   ShieldCheck,
   Calendar,
+  Sparkles,
 };
 
 export const SLIDES_DATA = rawSlides.map((slide) => {
   const item = { ...slide };
 
-  if (item.moduleIcon && typeof item.moduleIcon === 'string') {
-    item.moduleIcon = ICON_MAP[item.moduleIcon] || FileText;
+  if (item.moduleLeft && typeof item.moduleLeft.icon === 'string') {
+    item.moduleLeft = {
+      ...item.moduleLeft,
+      icon: ICON_MAP[item.moduleLeft.icon] || FileText,
+    };
   }
 
-  if (item.cards) {
-    item.cards = item.cards.map((c) => ({
-      ...c,
-      icon: typeof c.icon === 'string' ? (ICON_MAP[c.icon] || FileText) : c.icon,
-    }));
+  if (item.moduleRight && typeof item.moduleRight.icon === 'string') {
+    item.moduleRight = {
+      ...item.moduleRight,
+      icon: ICON_MAP[item.moduleRight.icon] || FileText,
+    };
   }
 
-  if (item.categories) {
+  if (item.categories && Array.isArray(item.categories)) {
     item.categories = item.categories.map((cat) => ({
       ...cat,
-      icon: typeof cat.icon === 'string' ? (ICON_MAP[cat.icon] || FileText) : cat.icon,
+      icon: ICON_MAP[cat.icon] || Users,
     }));
   }
 
   return item;
 });
-
-export const MODULE_NAMES = SLIDES_DATA
-  .filter((s) => s.type === 'module')
-  .map((s) => s.sectionName);

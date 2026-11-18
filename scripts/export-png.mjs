@@ -14,7 +14,7 @@ fs.readdirSync(PNG_DIR).forEach(f => {
   if (f.endsWith('.png')) fs.unlinkSync(path.join(PNG_DIR, f));
 });
 
-const TOTAL_SLIDES = 20;
+const TOTAL_SLIDES = 11;
 
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage();
@@ -42,7 +42,7 @@ await page.waitForTimeout(1500);
 for (let i = 0; i < TOTAL_SLIDES; i++) {
   if (i > 0) {
     await page.keyboard.press('ArrowRight');
-    await page.waitForTimeout(1600); // allow Framer Motion animation to settle
+    await page.waitForTimeout(2000); // allow staggered row-by-row card animations to fully settle
   }
 
   const outPath = path.join(PNG_DIR, `slide-${String(i + 1).padStart(2, '0')}.png`);

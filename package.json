@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "export:pptx": "node scripts/export-pptx.mjs",
-    "export:png": "npm run build && npm run preview & node scripts/export-png.mjs"
+    "export:png": "npm run build && npm run preview & node scripts/export-png.mjs",
+    "crops": "node scripts/make-crops.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
@@ -31,6 +32,7 @@
     "globals": "^17.13.0",
     "playwright": "^1.65.1",
     "postcss": "^8.5.3",
+    "sharp": "^0.35.5",
     "tailwindcss": "^3.4.17",
     "vite": "^8.3.6"
   }

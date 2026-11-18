@@ -1,6 +1,6 @@
 import React from 'react';
-import ModuleSlide from '../components/ModuleSlide';
+import { TwoColumnSlide } from '../components/shared';
 
-export default function Slide5(props) {
-  return <ModuleSlide slideNumber={5} {...props} />;
+export default function Slide5() {
+  return <TwoColumnSlide slideNumber={5} totalSlides={11} />;
 }
